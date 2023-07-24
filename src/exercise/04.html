@@ -13,6 +13,9 @@
     const PropTypes = {
       string(props, propName, componentName) {
         if (typeof props[propName] !== "string") {
+          if (typeof props[propName] === "undefined") {
+            return new Error(`You used the <${componentName}> component without setting its "${propName}" property -- you must set it, and its value must be a string`)
+          }
           return new Error(`You passed the <${componentName}> component a property "${propName}" with the value "${props[propName]}", which is of the type "${typeof props[propName]}" -- you must pass something of the type "string" instead!`)
         }
       }
