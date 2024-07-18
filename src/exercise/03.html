@@ -12,9 +12,10 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
 
   <script type="text/babel">
-    const className = 'container'
     const children = 'Hello World'
-    const element = <div className={className}>{children}</div>
+    const className = 'container'
+    const props = {children, className}
+    const element = <div {...props} /> // how do I apply props to this div?
 
     ReactDOM.createRoot(document.getElementById('root')).render(element)
   </script>
