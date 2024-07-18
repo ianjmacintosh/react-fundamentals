@@ -18,12 +18,17 @@
     // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
     // element.className = 'container' // 💰 in React, this is also called the "className" prop
 
-    const firstSpan = React.createElement('span', {children: 'Hello '})
-    const secondSpan = React.createElement('span', {children: 'World'})
-    const element = React.createElement('div', {
-      className: 'container',
-      children: [firstSpan, secondSpan],
-    })
+    const firstSpan = React.createElement('span', {}, 'Hello')
+    const secondSpan = React.createElement('span', {}, 'World')
+    const element = React.createElement(
+      'div',
+      {
+        className: 'container',
+      },
+      firstSpan,
+      ' ',
+      secondSpan,
+    )
 
     // This is similar to ReactDOM.createRoot().render()
     // rootElement.append(element)
