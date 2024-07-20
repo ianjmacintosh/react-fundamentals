@@ -10,12 +10,9 @@ function UsernameForm({onSubmitUsername}) {
 
     const username = event.target.elements.username.value
 
-    showAlert(username)
+    onSubmitUsername(username)
   }
 
-  const showAlert = text => {
-    alert(text)
-  }
   return (
     <form onSubmit={handleSubmit}>
       <div>
