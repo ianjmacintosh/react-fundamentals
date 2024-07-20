@@ -15,6 +15,21 @@
       )
     }
 
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error(
+            `You passed ${propName} as ${props[propName]}, but it must be a string`,
+          )
+        }
+      },
+    }
+
+    Message.propTypes = {
+      greeting: PropTypes.string,
+      subject: PropTypes.string,
+    }
+
     const element = (
       <div className="container">
         <Message greeting="Hello" subject="World"></Message>
