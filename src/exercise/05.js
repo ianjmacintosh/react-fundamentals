@@ -4,10 +4,16 @@
 import * as React from 'react'
 import '../box-styles.css'
 
-function Box({size, style, children}) {
+function Box({size, className, style, children}) {
+  let sizeClass = ''
+
+  if (size) {
+    sizeClass = `box--${size}`
+  }
+
   return (
     <div
-      className={`box ${size ? `box--${size}` : ''}`.trim()}
+      className={`box ${sizeClass} ${className}`.trim()}
       style={{fontStyle: 'italic', ...style}}
     >
       {children}
