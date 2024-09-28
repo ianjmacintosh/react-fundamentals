@@ -4,10 +4,14 @@ workspace/
 **/.cache/
 **/build/
 **/public/build
-/playground
 **/tsconfig.tsbuildinfo
 
 # in a real app you'd want to not commit the .env
 # file as well, but since this is for a workshop
 # we're going to keep them around.
 # .env
+
+# By default /playground isn't tracked... but maybe I'll want
+#   to harken back on my early days of working my way through
+#   Epic React's "React Fundamentals" workshop?
+# /playground

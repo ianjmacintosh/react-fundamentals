@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<script type="module">
+			const rootElement = document.createElement('div')
+			rootElement.id = 'root'
+			document.body.append(rootElement)
+
+			const element = document.createElement('div')
+			element.className = 'container'
+			element.textContent = 'Hello World'
+
+			rootElement.append(element)
+			// 🐨 add the rootElement to the document.body
+		</script>
+
+		<!-- this is here to add automatic browser reloading as you save your work -->
+		<script type="module" src="epic_ws.js"></script>
+	</body>
+</html>
