@@ -1,16 +1,26 @@
 <html>
 	<body>
+		<div id="root"></div>
+
 		<script type="module">
-			const rootElement = document.createElement('div')
-			rootElement.id = 'root'
-			document.body.append(rootElement)
+			// 🐨 add imports for react and react-dom/client here
+			// 💰 import { createElement } from '/react.js'
+			// 💰 import { createRoot } from '/react-dom/client.js'
 
+			const rootElement = document.getElementById('root')
+
+			// You're going to re-implement this code using React!
+			// 💣 So go ahead and delete this implementation (or comment it out for now)
+			// These three lines are similar to createElement
+			// 📜 https://react.dev/reference/react/createElement
 			const element = document.createElement('div')
-			element.className = 'container'
-			element.textContent = 'Hello World'
-
+			element.className = 'container' // 💰 in React, this is also called the "className" prop
+			element.textContent = 'Hello World' // 💰 in React, this is the "children" prop or a third argument
+			// This is similar to createRoot().render()
 			rootElement.append(element)
-			// 🐨 add the rootElement to the document.body
+
+			// 🐨 Please replace all the DOM-related code above with React API calls
+			// 💰 The example in the markdown file should be a good hint for you.
 		</script>
 
 		<!-- this is here to add automatic browser reloading as you save your work -->
