@@ -1,16 +1,15 @@
-# Deep Nesting Elements
+# Compiling JSX
 
-<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/deep-nesting-elements" />
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/compiling-jsx" />
 
-👨‍💼 Just to make sure we really understand how to nest this stuff. Try to create
-this using React's APIs:
+<callout-warning>
+	Normally you'll compile all of your code at build-time before you ship your
+	application to the browser, but because Babel is written in JavaScript we can
+	actually run it _in_ the browser to compile our code on the fly and that's
+	what we'll do in this exercise.
+</callout-warning>
 
-```html
-<div class="container">
-	<p>Here's Sam's favorite food:</p>
-	<ul class="sams-food">
-		<li>Green eggs</li>
-		<li>Ham</li>
-	</ul>
-</div>
-```
+👨‍💼 Let's add a script tag for Babel, then we'll update our own script tag to
+tell Babel to compile it for us on the fly. When you're done, you should notice
+the compiled version of the code appears in the `<head>` of the DOM (which you
+can inspect using DevTools).

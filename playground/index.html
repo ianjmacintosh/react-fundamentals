@@ -2,20 +2,31 @@
 	<body>
 		<div id="root"></div>
 
-		<script type="module">
-			import { createElement } from '/react.js'
+		<script type="text/babel" data-type="module">
+			// 🐨 on the script tag above, change `type="module"`
+			// to `type="text/babel"` and add data-type="module" so babel will compile
+			// this code as a module script for the browser to run.
+
+			import * as React from '/react.js'
 			import { createRoot } from '/react-dom/client.js'
 
 			const rootElement = document.getElementById('root')
 
-			const pElement = createElement('p', null, "Here's Sam's favorite food:")
-			const li1Element = createElement('li', null, 'Green eggs')
-			const li2Element = createElement('li', null, 'Ham')
-			const ulElement = createElement('ul', { className: 'sams-food' }, li1Element, li2Element)
-			const containerElement = createElement('div', { className: 'container' }, pElement, ulElement)
+			// 🐨 With babel compiling this code, you can now re-implement this using JSX!
+			const element = <div className="container">Hello World</div>
 
-			createRoot(rootElement).render(containerElement)
+			// 💰 there are a few subtle differences between JSX and HTML. One such
+			// difference is how you apply a class to an element in JSX is by using
+			// `className` rather than `class`!
+			// 📜 You can learn the differences between JSX and HTML syntax from the React docs here:
+			// https://react.dev/reference/react-dom/components/common
+
+			createRoot(rootElement).render(element)
 		</script>
+
+		<!-- 🐨 add Babel to the page.-->
+		<script type="module" src="/babel-standalone.js"></script>
+
 
 		<!-- this is here to add automatic browser reloading as you save your work -->
 		<script type="module" src="epic_ws.js"></script>
