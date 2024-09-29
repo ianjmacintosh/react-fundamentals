@@ -10,8 +10,9 @@
 
 			const children = 'Hello World'
 			const className = 'container'
-			// 🐨 get the children and className interpolated into this element:
-			const element = <div className={className}>{children}</div>
+			const props = { children, className }
+			// 🐨 get this props object spread onto the div element
+			const element = <div></div>
 
 			createRoot(rootElement).render(element)
 		</script>
