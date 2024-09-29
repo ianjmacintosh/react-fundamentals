@@ -8,30 +8,18 @@
 
 			const rootElement = document.getElementById('root')
 
-			// 🐨 re-create this with createElement and assign that to the element variable
-			// <div class="container">
-			// 	<p>Here's Sam's favorite food:</p>
-			// 	<ul class="sams-food">
-			// 		<li>Green eggs</li>
-			// 		<li>Ham</li>
-			// 	</ul>
-			// </div>
-
-			const paragraphElement = createElement(
-				'p',
-				null,
-				"Here's Sam's favorite food:",
+			const containerElement = createElement(
+				'div',
+				{ className: 'container' },
+				createElement('p', null, "Here's Sam's favorite food:"),
+				createElement(
+					'ul',
+					{ className: 'sams-food' },
+					createElement('li', null, 'Green eggs'),
+					createElement('li', null, 'Ham'),
+				),
 			)
-			const firstFoodElement = createElement('li', null, 'Green eggs')
-			const secondFoodElement = createElement('li', null, 'Ham')
-			const unorderedListElement = createElement('ul', {
-				className: 'sams-food',
-				children: [firstFoodElement, secondFoodElement],
-			})
-			const containerElement = createElement('div', {
-				className: 'container',
-				children: [paragraphElement, unorderedListElement],
-			})
+
 
 			createRoot(rootElement).render(containerElement)
 		</script>
