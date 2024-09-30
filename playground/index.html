@@ -10,6 +10,7 @@
 
 			// NOTE: this is NOT being used as a component. We're not quite there yet.
 			function message({ children }) {
+				console.log(`Invoked! ${children}`)
 				return <div className="message">{children}</div>
 			}
 
@@ -20,6 +21,8 @@
 					{React.createElement(message, { children: 'Goodbye World' })}
 				</div>
 			)
+
+			console.log(element)
 
 			createRoot(rootElement).render(element)
 		</script>
