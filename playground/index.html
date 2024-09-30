@@ -8,15 +8,31 @@
 
 			const rootElement = document.getElementById('root')
 
-			// 🐨 capitalize the name of this function
-			function Message({ children }) {
-				return <div className="message">{children}</div>
+			const operations = {
+				'+': (left, right) => left + right,
+				'-': (left, right) => left - right,
+				'*': (left, right) => left * right,
+				'/': (left, right) => left / right,
+			}
+
+			// 🐨 accept the right props in the Calculator component here
+			function Calculator() {
+				// 💰 you can get the result with: operations[operator](left, right)
+				return (
+					<div>
+						{/* 🐨 render the equation and it's result here */}
+						{/* 💰 open the final version in the app if you're unsure */}
+					</div>
+				)
 			}
 
 			const element = (
-				<div className="container">
-					<Message>Hello World</Message>
-					<Message>Goodbye World</Message>
+				<div>
+					<h1>Calculator</h1>
+					<Calculator left={1} operator="+" right={2} />
+					<Calculator left={1} operator="-" right={2} />
+					<Calculator left={1} operator="*" right={2} />
+					<Calculator left={1} operator="/" right={2} />
 				</div>
 			)
 
