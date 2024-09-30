@@ -8,16 +8,15 @@
 
 			const rootElement = document.getElementById('root')
 
-			// 🐨 replace the <div> with a React Fragment.
-			// 💯 try both syntaxes!
+			// 🐨 Make a function called `message` which returns the JSX we want to share
+
+			// 🐨 use that function in place of the divs below with:
+			// 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
 			const element = (
-				<React.Fragment>
-					<p>Here's Sam's favorite food:</p>
-					<ul className="sams-food">
-						<li>Green eggs</li>
-						<li>Ham</li>
-					</ul>
-				</React.Fragment>
+				<div className="container">
+					<div className="message">Hello World</div>
+					<div className="message">Goodbye World</div>
+				</div>
 			)
 
 			createRoot(rootElement).render(element)
