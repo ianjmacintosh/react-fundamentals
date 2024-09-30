@@ -8,15 +8,16 @@
 
 			const rootElement = document.getElementById('root')
 
-			// 🐨 Make a function called `message` which returns the JSX we want to share
-			const message = ({ children }) => <div className="message">{children}</div>
+			// NOTE: this is NOT being used as a component. We're not quite there yet.
+			function message({ children }) {
+				return <div className="message">{children}</div>
+			}
 
-			// 🐨 use that function in place of the divs below with:
-			// 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
 			const element = (
 				<div className="container">
-					{message({ children: 'Hello World' })}
-					{message({ children: 'Goodbye World' })}
+					{/* 🐨 change these function calls to React.createElement API calls */}
+					{React.createElement(message, { children: 'Hello World' })}
+					{React.createElement(message, { children: 'Goodbye World' })}
 				</div>
 			)
 
