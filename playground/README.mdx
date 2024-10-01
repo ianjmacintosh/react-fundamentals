@@ -1,40 +1,39 @@
-# Narrow Types
+# Derive Types
 
-<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/narrow-types" />
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/derive-types" />
 
-👨‍💼 Our `CalculatorProps['operator']` type being set simply to `string` is not
-"narrow" enough to help users of our `Calculator` component. It allows _any_
-`string` value to be provided, even one which our Calculator doesn't support.
-For example, the exponentiation operator `**` could be passed and TypeScript
-won't complain, but this would cause a runtime error because we don't have a
-function to handle that operator:
+👨‍💼 You may have noticed that we're duplicating our operators of `+`, `-`, `*`,
+and `/`. Any time we want to add a new operator, we have to add it in two places
+and if we miss one then we could either have a runtime error, or users won't be
+able to use our new operator at all.
 
-```tsx
-element = <Calculator left={2} operator="**" right={3} /> // 💥
-```
+It would be better if we could have the compiler let us know we missed one
+(foreshadowing... look forward to that in an upcoming step) or just
+derive the possible operators.
 
-On top of that, the API for our `Calculator` isn't very discoverable. How would
-people know which `operations` are possible? Docs? Trial and error?
-
-Rather than a `string`, your TypeScript type definition can be set to a specific
-string. For example:
+To do this, you need to know about two TypeScript keywords: `typeof` and
+`keyof`. Technically `typeof` is a JavaScript feature, but TypeScript builds on
+top of this and will get you the TypeScript type for the given variable. So if
+you say:
 
 ```tsx
-type KodyString = 'Kody'
-let kody: KodyString // this variable can only ever be set to the string 'Kody'
+const user = { name: 'kody', isCute: true }
+type User = typeof user
+// type User = { name: string; isCute: boolean; }
 ```
 
-Combine that functionality with
-[union syntax of `|`](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)
-and you'll be able to specify exactly which operators are allowed. For example:
+And then you can use `keyof` to get a union-ed type of strings of all the keys
+in a given type:
 
 ```tsx
-type KodyOrHannahString = 'Kody' | 'Hannah'
-let assistant: KodyOrHannahString // this variable can only ever be set to the string 'Kody' or 'Hannah'
-
-// 💰 tip: we could do the same thing without creating a type by inlining instead:
-// let assistant: 'Kody' | 'Hannah'
+type UserKeys = keyof User
+// type UserKeys = "name" | "isCute"
 ```
 
-How about we narrow our `operator` type from a `string` to some specific strings
-using a union.
+📜 Learn more about TypeScript's
+[`typeof` operator](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html)
+and
+[`keyof` operator](https://www.typescriptlang.org/docs/handbook/2/keyof-types.html).
+
+With that, try and derive the type of the `CalculatorProps['operator']` so you
+don't have to repeat yourself.

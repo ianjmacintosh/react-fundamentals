@@ -9,8 +9,8 @@ const operations = {
 
 type CalculatorProps = {
 	left: number
-	// 🦺 limit the operator to be only +, -, *, or /
-	operator: "+" | "-" | "*" | "/"
+	// 🐨 derive these values from the keys of the operations object
+	operator: '+' | '-' | '*' | '/'
 	right: number
 }
 function Calculator({ left, operator, right }: CalculatorProps) {
