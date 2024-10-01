@@ -8,13 +8,13 @@ const operations = {
 }
 
 type CalculatorProps = {
-	left: number,
-	right: number,
-	operator: string,
+	left: number
+	// 🦺 limit the operator to be only +, -, *, or /
+	operator: string
+	right: number
 }
-
 function Calculator({ left, operator, right }: CalculatorProps) {
-	// @ts-expect-error we'll fix this one later
+	// @ts-expect-error 💣 when you finish, remove this comment.
 	const result = operations[operator](left, right)
 	return (
 		<div>
