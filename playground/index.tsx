@@ -8,10 +8,9 @@ const operations = {
 }
 
 type CalculatorProps = {
-	left: number
-	// 🐨 derive these values from the keys of the operations object
-	operator: '+' | '-' | '*' | '/'
-	right: number
+	left: number;
+	operator: keyof typeof operations;
+	right: number;
 }
 function Calculator({ left, operator, right }: CalculatorProps) {
 	const result = operations[operator](left, right)
