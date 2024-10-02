@@ -1,39 +1,38 @@
-# Derive Types
+# Default Props
 
-<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/derive-types" />
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/default-props" />
 
-👨‍💼 You may have noticed that we're duplicating our operators of `+`, `-`, `*`,
-and `/`. Any time we want to add a new operator, we have to add it in two places
-and if we miss one then we could either have a runtime error, or users won't be
-able to use our new operator at all.
+👨‍💼 Sometimes you want to allow the user of your component to skip providing a
+prop and use a default value instead. To do this, we can use
+[destructuring default values syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Default_values_2),
+but when users of our component try to skip a prop, TypeScript will complain
+because our type says all the elements of the `CalculatorProps` type are
+required.
 
-It would be better if we could have the compiler let us know we missed one
-(foreshadowing... look forward to that in an upcoming step) or just
-derive the possible operators.
-
-To do this, you need to know about two TypeScript keywords: `typeof` and
-`keyof`. Technically `typeof` is a JavaScript feature, but TypeScript builds on
-top of this and will get you the TypeScript type for the given variable. So if
-you say:
+So when you make a prop optional, make sure you provide any relevant default
+value as well as mark it as optional using the
+[optional properties syntax](https://www.typescriptlang.org/docs/handbook/2/objects.html#optional-properties):
 
 ```tsx
-const user = { name: 'kody', isCute: true }
-type User = typeof user
-// type User = { name: string; isCute: boolean; }
+type User = { name: string; isCute?: boolean }
+// name is required, isCute is optional, so these both compile:
+const kody = { name: 'Kody', isCute: true }
+const peter = { name: 'Peter' }
 ```
 
-And then you can use `keyof` to get a union-ed type of strings of all the keys
-in a given type:
+For this step, make all props optional. Default `left` and `right` to
+`0` and `operator` to `'+'`. Then you can update the App to test it out:
 
 ```tsx
-type UserKeys = keyof User
-// type UserKeys = "name" | "isCute"
+function App() {
+	return (
+		<div>
+			<h1>Calculator</h1>
+			<Calculator left={1} right={2} />
+			<Calculator operator="-" />
+			<Calculator left={1} operator="*" />
+			<Calculator operator="/" right={2} />
+		</div>
+	)
+}
 ```
-
-📜 Learn more about TypeScript's
-[`typeof` operator](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html)
-and
-[`keyof` operator](https://www.typescriptlang.org/docs/handbook/2/keyof-types.html).
-
-With that, try and derive the type of the `CalculatorProps['operator']` so you
-don't have to repeat yourself.
