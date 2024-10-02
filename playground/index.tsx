@@ -1,6 +1,14 @@
 import { createRoot } from 'react-dom/client'
 
+// 🦺 create an OperationFn type that represents the common shape of the
+// operation functions below
+// 🦺 create an Operator type that's set to the union of +, -, *, and /
+// 🦉 Note: you cannot use "keyof typeof operations" anymore because of a
+// circular dependency here
+
+// 🦺 cast the operations variable to a Record of the Operator type and the OperationFn type
 const operations = {
+	// 🦺 remove all the ": number" from these functions
 	'+': (left: number, right: number): number => left + right,
 	'-': (left: number, right: number): number => left - right,
 	'*': (left: number, right: number): number => left * right,
@@ -8,12 +16,10 @@ const operations = {
 }
 
 type CalculatorProps = {
-	// 🐨 make each of these optional
 	left?: number
 	operator?: keyof typeof operations
 	right?: number
 }
-// 🐨 add defaults so if a user just uses <Calculator /> they'll get "0 + 0 = 0"
 function Calculator({ left = 0, operator = '+', right = 0 }: CalculatorProps) {
 	const result = operations[operator](left, right)
 	return (
@@ -29,14 +35,10 @@ function App() {
 	return (
 		<div>
 			<h1>Calculator</h1>
-			{/* 🐨 remove the values that are not strictly necessary */}
 			<Calculator left={1} right={2} />
 			<Calculator operator="-" />
 			<Calculator left={1} operator="*" />
-			<Calculator left={0} operator="/" right={2} />
-			{/* 🦉 Sometimes passing a value that's the default is ok even if it's not
-			strictly necessary because it's more explicit and clear. But we're just
-			playing around with TypeScript and defaults here so play along please! */}
+			<Calculator operator="/" right={2} />
 		</div>
 	)
 }
