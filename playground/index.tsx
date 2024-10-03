@@ -6,7 +6,7 @@ const Box = ({style, className, children, ...props}: React.ComponentProps<'div'>
 		fontStyle: 'italic',
 		...style
 	}
-	const classNameString = `box ${className}`
+	const classNameString = `box ${className ? className : ''}`.trim()
 	return <div style={styleObject} className={classNameString} {...props}>{children}</div>
 }
 const smallBox = (
