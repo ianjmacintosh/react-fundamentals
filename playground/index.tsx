@@ -3,15 +3,7 @@ import { createRoot } from 'react-dom/client'
 function App() {
 	return (
 		<form
-			method="POST"
-			encType="multipart/form-data"
 			action="api/onboarding"
-			onSubmit={event => {
-				event.preventDefault()
-				const form = event.currentTarget
-				const formData = new FormData(form)
-				console.log(Object.fromEntries(formData))
-			}}
 			// 🦉 Follow these instructions in order. Test the behavior after each step
 			// 1️⃣ 🐨 set the method to "POST" then update api.server.ts to handle the POST request
 			// 2️⃣ 🐨 set the encType to "multipart/form-data"
