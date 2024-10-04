@@ -4,6 +4,7 @@ function App() {
 	return (
 		<form
 			method="POST"
+			encType="multipart/form-data"
 			action="api/onboarding"
 			// 🦉 Follow these instructions in order. Test the behavior after each step
 			// 1️⃣ 🐨 set the method to "POST" then update api.server.ts to handle the POST request
