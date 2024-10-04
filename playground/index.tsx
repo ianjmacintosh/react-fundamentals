@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 function App() {
 	return (
 		<form
+			method="POST"
+			encType="multipart/form-data"
+			action="api/onboarding"
 			onSubmit={event => {
 				event.preventDefault()
 				const form = event.currentTarget
