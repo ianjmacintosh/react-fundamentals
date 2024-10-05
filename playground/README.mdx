@@ -1,17 +1,15 @@
-# Form Actions
+# Checkbox
 
-<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/form-actions" />
+<EpicVideo url="https://www.epicreact.dev/workshops/react-fundamentals/checkbox" />
 
-👨‍💼 `onSubmit` handlers that prevent default and handle file uploads like this
-are so common that React has a built-in way to do that! The `action` prop on a
-form can accept a function! The function accepts a `formData` object.
+👨‍💼 We need to add a checkbox for whether the user has already signed a waiver.
 
-<callout-warning class="aside">
-	Note that in HTML, attributes cannot accept functions. The action prop
-	accepting a function is a React feature.
-</callout-warning>
+For checkboxes, typically they appear on the left side of the label and in this
+case we can even have the checkbox be _inside_ the label which means we don't
+need to worry about the `for` and `id` attributes which is nice.
 
-In this exercise, create a function for logging the `formData` like we are
-currently and delete all the superfluous props.
+Please add the checkbox to the form.
 
-📜 [`<form />` React docs](https://react.dev/reference/react-dom/components/form)
+Once you've done that, make sure to submit the form with the checkbox checked
+and without it checked so you can familiarize yourself with the difference in
+form data because it's kinda funny.

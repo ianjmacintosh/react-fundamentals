@@ -1,16 +1,11 @@
 import { createRoot } from 'react-dom/client'
 
 function App() {
-	// 🐨 create a function called logFormData which accepts a FormData object
-	const logFormData = (formData: FormData) => {
+	function logFormData(formData: FormData) {
 		console.log(Object.fromEntries(formData))
 	}
-	// 🐨 console.log the FormData object like we do in the current onSubmit handler
 	return (
-		<form
-			// 🐨 replace the string "api/onboarding" with the logFormData function
-			action={logFormData}
-		>
+		<form action={logFormData}>
 			<div>
 				<label htmlFor="usernameInput">Username:</label>
 				<input id="usernameInput" name="username" />
@@ -31,6 +26,8 @@ function App() {
 				<label htmlFor="colorInput">Favorite Color:</label>
 				<input id="colorInput" name="color" type="color" />
 			</div>
+			{/* 🐨 add a checkbox with the label "Waiver Signed" */}
+			{/* 💰 put the <input> inside the <label> */}
 			<div>
 				<label htmlFor="startDateInput">Start Date:</label>
 				<input id="startDateInput" name="startDate" type="date" />
