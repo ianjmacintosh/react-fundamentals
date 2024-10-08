@@ -6,6 +6,7 @@ function App() {
 	}
 	return (
 		<form action={logFormData}>
+			{/* 🐨 add a hidden input with the name "orgId" and the value "123" */}
 			<div>
 				<label htmlFor="accountTypeSelection">Account Type:</label>
 				<select id="accountTypeSelection" name="accountType">
@@ -36,13 +37,10 @@ function App() {
 				<label htmlFor="colorInput">Favorite Color:</label>
 				<input id="colorInput" name="color" type="color" />
 			</div>
-			<div>
-			{/* 🐨 add a fieldset with the legend "Visibility" */}
 			<fieldset>
-				<legend>Visibility</legend>
-			{/* 🐨 add two radio buttons for public/private options for the name "visibility" */}
+				<legend>Visibility:</legend>
 				<label>
-					<input name="visibility" type="radio" value="public" defaultChecked />
+					<input name="visibility" type="radio" value="public" />
 					Public
 				</label>
 				<label>
@@ -50,7 +48,6 @@ function App() {
 					Private
 				</label>
 			</fieldset>
-			</div>
 			<div>
 				<label>
 					<input name="waiver" type="checkbox" />
