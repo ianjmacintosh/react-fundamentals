@@ -7,6 +7,16 @@ function App() {
 	return (
 		<form action={logFormData}>
 			<div>
+				<label htmlFor="accountTypeInput">Account Type:</label>
+				<select id="accountTypeInput" name="accountType">
+					<option value="">--Please select an option--</option>
+					<option value="admin">Admin</option>
+					<option value="teacher">Teacher</option>
+					<option value="parent">Parent</option>
+					<option value="student">Student</option>
+				</select>
+			</div>
+			<div>
 				<label htmlFor="usernameInput">Username:</label>
 				<input id="usernameInput" name="username" />
 			</div>
@@ -27,8 +37,8 @@ function App() {
 				<input id="colorInput" name="color" type="color" />
 			</div>
 			<div>
-				<label htmlFor="waiverSignedInput">
-					<input id="waiverSignedInput" name="waiver" type="checkbox" />
+				<label>
+					<input name="waiver" type="checkbox" />
 					Waiver Signed
 				</label>
 			</div>
