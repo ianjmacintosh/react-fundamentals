@@ -7,8 +7,8 @@ function App() {
 	return (
 		<form action={logFormData}>
 			<div>
-				<label htmlFor="accountTypeInput">Account Type:</label>
-				<select id="accountTypeInput" name="accountType">
+				<label htmlFor="accountTypeSelection">Account Type:</label>
+				<select id="accountTypeSelection" name="accountType">
 					<option value="">--Please select an option--</option>
 					<option value="admin">Admin</option>
 					<option value="teacher">Teacher</option>
@@ -36,6 +36,8 @@ function App() {
 				<label htmlFor="colorInput">Favorite Color:</label>
 				<input id="colorInput" name="color" type="color" />
 			</div>
+			{/* 🐨 add a fieldset with the legend "Visibility" */}
+			{/* 🐨 add two radio buttons for public/private options for the name "visibility" */}
 			<div>
 				<label>
 					<input name="waiver" type="checkbox" />
