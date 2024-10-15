@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client'
-// 🐨 bring in useErrorBoundary from react-error-boundary
-import { ErrorBoundary, useErrorBoundary, type FallbackProps } from 'react-error-boundary'
+import {
+	ErrorBoundary,
+	useErrorBoundary,
+	type FallbackProps,
+} from 'react-error-boundary'
 
 function OnboardingForm() {
-	// 🐨 call useErrorBoundary here and get the showBoundary function
 	const { showBoundary } = useErrorBoundary()
 	return (
 		<form
@@ -11,8 +13,6 @@ function OnboardingForm() {
 			method="POST"
 			encType="multipart/form-data"
 			onSubmit={event => {
-				// 🐨 wrap all of this in a try/catch block
-				// 🐨 call showBoundary with the error in the catch block
 				try {
 					event.preventDefault()
 					const formData = new FormData(event.currentTarget)
@@ -102,11 +102,17 @@ function OnboardingForm() {
 	)
 }
 
+// 🐨 accept the resetErrorBoundary prop here and call it when the user clicks
+// the "Try again" button
 function ErrorFallback({ error }: FallbackProps) {
 	return (
 		<div role="alert">
 			There was an error:{' '}
 			<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
+			{/* 
+				🐨 Add a "Try again" button. Assign the resetErrorBoundary function to its onClick prop. 
+				💰 For more on the onClick event handler, visit: 📜 https://react.dev/learn/responding-to-events
+			*/}
 		</div>
 	)
 }
