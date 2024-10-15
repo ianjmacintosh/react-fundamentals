@@ -1,19 +1,21 @@
 import { createRoot } from 'react-dom/client'
-// 🐨 bring in ErrorBoundary and FallbackProps type from react-error-boundary
+// 🐨 bring in useErrorBoundary from react-error-boundary
 import { ErrorBoundary, type FallbackProps } from 'react-error-boundary'
 
-// 🐨 Rename this to OnboardingForm
 function OnboardingForm() {
+	// 🐨 call useErrorBoundary here and get the showBoundary function
 	return (
 		<form
 			action="api/onboarding"
 			method="POST"
 			encType="multipart/form-data"
 			onSubmit={event => {
+				// 🐨 wrap all of this in a try/catch block
+				// 🐨 call showBoundary with the error in the catch block
 				event.preventDefault()
 				const formData = new FormData(event.currentTarget)
 				console.log(Object.fromEntries(formData))
-				const accountType = formData.get('accountType') as string
+				const accountType = formData.get('accounType') as string
 				console.log(accountType.toUpperCase())
 			}}
 		>
@@ -87,9 +89,7 @@ function OnboardingForm() {
 					id="startDateInput"
 					name="startDate"
 					type="date"
-					// 💰 you can comment this out to avoid the runtime error
-					defaultValue={new Date('today').toISOString().slice(0, 10)}
-					// defaultValue={new Date().toISOString().slice(0, 10)}
+					defaultValue={new Date().toISOString().slice(0, 10)}
 				/>
 			</div>
 			<button type="submit">Submit</button>
@@ -97,26 +97,22 @@ function OnboardingForm() {
 	)
 }
 
-// 🐨 create an ErrorFallback component here that accepts FallbackProps
-// and renders the error.message
-const ErrorFallback = ({ error }: FallbackProps) => (
-	<div role="alert">
-		<p>Something went wrong:</p>
-		<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
-	</div>
-)
-// 💯 you can make it look nice if you want
-// 📜 https://github.com/bvaughn/react-error-boundary#errorboundary-with-fallbackcomponent-prop
+function ErrorFallback({ error }: FallbackProps) {
+	return (
+		<div role="alert">
+			There was an error:{' '}
+			<pre style={{ color: 'red', whiteSpace: 'normal' }}>{error.message}</pre>
+		</div>
+	)
+}
 
-// 🐨 make a component called "App" that renders the OnboardingForm inside an
-// ErrorBoundary with the ErrorFallback as the FallbackComponent
-const App = () => (
-	<ErrorBoundary FallbackComponent={ErrorFallback}>
-		<OnboardingForm />
-	</ErrorBoundary>
-)
-// 🦉 as a tip, you could use the onError prop if you wanted to report errors to
-// a reporting service like Sentry.io
+function App() {
+	return (
+		<ErrorBoundary FallbackComponent={ErrorFallback}>
+			<OnboardingForm />
+		</ErrorBoundary>
+	)
+}
 
 const rootEl = document.createElement('div')
 document.body.append(rootEl)
